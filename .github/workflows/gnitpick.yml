@@ -5,14 +5,14 @@ on: [push, pull_request]
 
 env:
   DOMAINS: seravo.com
-  PYTHON_VERSION: "3.10"
+  PYTHON_VERSION: "3.12"
 
 jobs:
   nitpick:
     runs-on: ubuntu-latest
     steps:
       - name: Setup repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.head_ref }}
 
@@ -20,7 +20,7 @@ jobs:
         run: curl -O https://raw.githubusercontent.com/Seravo/gnitpick/master/gnitpick.py
 
       - name: Set up python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
